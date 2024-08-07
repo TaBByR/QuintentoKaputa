@@ -4,7 +4,11 @@ import { navigate } from "../router.js";
 let currentQuestion = 0;
 const maxQuestions = questions.length - 1;
 let quizzContainer;
-let currentTimer;
+let currentTimer
+let firstPlace = false;
+let secondPlace = false;
+let thirdPlace = false;
+let trash = false;
 
 function render() {
 

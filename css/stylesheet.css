@@ -1,6 +1,6 @@
 body {
     padding: 0;
-    margin : 0;
+    margin: 0;
 }
 
 #olympicContainer {
@@ -19,7 +19,7 @@ body {
     height: 600px;
     background-color: blue;
     margin: 50px;
-    
+
 }
 
 #raceContainer {
@@ -42,8 +42,20 @@ body {
     width: 50px;
     height: 600px;
     top: 20;
-    align-items : flex-end;
+    align-items: flex-end;
     background-color: blue;
+}
+
+#hallOfFameContainer {
+    height: 100vh;
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../pista.jpeg");
+    background-size: cover;
 }
 
 #player1 {
@@ -69,3 +81,5 @@ body {
     height: 50px;
     position: relative;
 }
+
+
