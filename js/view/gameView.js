@@ -26,10 +26,25 @@ function render() {
     raceContainer.setAttribute("id", "raceContainer");
     olympicContainer.appendChild(raceContainer);
 
-    const player = document.createElement("img");
-    player.setAttribute("id", "player");
-    player.setAttribute("src", "player.png");
-    raceContainer.appendChild(player)
+    const player1 = document.createElement("img");
+    player1.setAttribute("id", "player1");
+    player1.setAttribute("src", "player.png");
+    raceContainer.appendChild(player1)
+
+    const player2 = document.createElement("img");
+    player2.setAttribute("id", "player2");
+    player2.setAttribute("src", "player.png");
+    raceContainer.appendChild(player2)
+
+    const player3 = document.createElement("img");
+    player3.setAttribute("id", "player3");
+    player3.setAttribute("src", "player.png");
+    raceContainer.appendChild(player3)
+
+    const player4 = document.createElement("img");
+    player4.setAttribute("id", "player4");
+    player4.setAttribute("src", "player.png");
+    raceContainer.appendChild(player4)
    
 
     makeQuestionForm();
