@@ -1,4 +1,10 @@
+import { questions } from "../service/gameService.js";
+import { navigate } from "../router.js";
 
+let currentQuestion = 0;
+const maxQuestions = questions.length - 1;
+let quizzContainer;
+let currentTimer;
 
 function render() {
 
@@ -14,7 +20,7 @@ function render() {
 
     container.appendChild(olympicContainer);
 
-    const quizzContainer = document.createElement("div");
+    quizzContainer = document.createElement("div");
     quizzContainer.setAttribute("id", "quizzContainer");
     olympicContainer.appendChild(quizzContainer);
 
@@ -22,9 +28,74 @@ function render() {
     const raceContainer = document.createElement("div");
     raceContainer.setAttribute("id", "raceContainer");
     olympicContainer.appendChild(raceContainer);
-    
-   
+
+    makeQuestionForm();
+
+
 };
+
+function makeQuestionForm() {
+
+    quizzContainer.innerHTML = "";
+
+    const timer = document.createElement("h3");
+    timer.textContent = questions[currentQuestion].time;
+
+    const questionText = document.createElement("p");
+    questionText.textContent = questions[currentQuestion].question;
+
+    quizzContainer.appendChild(timer);
+    quizzContainer.appendChild(questionText);
+
+    currentTimer = setInterval(() => {
+        questions[currentQuestion].time--;
+        timer.textContent = questions[currentQuestion].time;
+
+        if (questions[currentQuestion].time === 0) {
+            changeQuestion();
+        }
+
+    }, 1000);
+
+    for (let i = 0; i < questions[0].responses.length; i++) {
+        let response = document.createElement("p");
+        let responseButton = document.createElement("button");
+        responseButton.setAttribute("id", i);
+
+        responseButton.addEventListener("click", checkResponse, currentTimer);
+
+        responseButton.textContent = i + 1;
+        response.textContent = questions[currentQuestion].responses[i];
+
+        quizzContainer.appendChild(response);
+        quizzContainer.appendChild(responseButton);
+    }
+
+
+}
+
+function changeQuestion() {
+    clearInterval(currentTimer);
+
+    if (currentQuestion >= maxQuestions) {
+        console.log("entrei");
+        navigate("/cabinetofcuriosities");
+        return;
+    }
+    currentQuestion++;
+    makeQuestionForm();
+}
+
+function checkResponse(currentTimer) {
+    const userResponse = event.target.id;
+
+    if (userResponse == questions[currentQuestion].correctResponse) {
+        console.log("acertou");
+    } else {
+        console.log("fodeus");
+    }
+    changeQuestion();
+}
 
 export default { render };
 

@@ -34,7 +34,7 @@ function handlePopState({ state }) {
     launchController(route.controller);
 }
 
-function navigate(path, firstLoad = false) {
+export function navigate(path, firstLoad = false) {
     if (path === routes.currentPath.path) {
         return;
     }
