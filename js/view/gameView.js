@@ -6,11 +6,8 @@ function render() {
 
     container.innerHTML = "";
 
-
-
     const olympicContainer = document.createElement("div");
     olympicContainer.setAttribute("id", "olympicContainer");
-
 
     container.appendChild(olympicContainer);
 
@@ -22,9 +19,14 @@ function render() {
     const raceContainer = document.createElement("div");
     raceContainer.setAttribute("id", "raceContainer");
     olympicContainer.appendChild(raceContainer);
-    
+
+    const player = document.createElement("img");
+    player.setAttribute("id", "player");
+    player.setAttribute("src", "player.png");
+    raceContainer.appendChild(player)
    
 };
 
-export default { render };
+export default { render};
+
 
