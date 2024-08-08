@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-  }
+    margin: 0;
+}
 
 #olympicContainer {
     background-color: green;
@@ -21,7 +22,7 @@ body {
     height: 600px;
     background-color: blue;
     margin: 50px;
-    
+    overflow: hidden;
 }
 
 #raceContainer {
@@ -44,8 +45,29 @@ body {
     width: 50px;
     height: 600px;
     top: 20;
-    align-items : flex-end;
+    align-items: flex-end;
     background-color: blue;
+}
+
+#hallOfFameContainer {
+    height: 100vh;
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../pista.jpeg");
+    background-size: cover;
+}
+
+.quizzImage {
+    width: 200px;
+}
+
+#runButton {
+    position: relative;
+    transition: 0.5s transform;
 }
 
 #player1 {
