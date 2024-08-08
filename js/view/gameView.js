@@ -497,6 +497,9 @@ function wrongAnswer() {
     const youSuck = document.createElement("img");
     youSuck.setAttribute("src", "MEKIE ALWAYS LOSES, NOW SO DO YOU.jpg")
 
+    youSuck.style.objectFit = 'cover'; 
+
+
     container.appendChild(timer);
     quizzContainer.appendChild(youSuck);
 }
