@@ -16,7 +16,7 @@ container.style.display = 'flex';
 
 
 // Create the header
-const header = document.createElement('header');
+const header = document.createElement('h1');
 header.innerText = 'HIGHLIGHTS FOR 1992';
 container.appendChild(header);
 
@@ -29,42 +29,42 @@ container.style.backgroundImage = 'url("../back.png")';
 // Create the cards content
 const cardsContent = [
   {
-    title: '1 - With who did Monserrat Caballé perform the opening song of 1992 Barcelona Olympiad Games?',
+    title: 'With who did Monserrat Caballé perform the opening song of 1992 Barcelona Olympiad Games?',
     imgSrc: 'montserrat.jpg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Freddie Mercury',
     text: 'Montserrat Caballé performed the 1992 Barcelona Olympic Games opening song, "Barcelona," with Freddie Mercury, making it an iconic anthem for the event.'
   },
   {
-    title: '2 - What country won the most number of medals in 1992 Barcelona Olympiad games?',
+    title: 'What country won the most number of medals in 1992 Barcelona Olympiad games?',
     imgSrc: 'unifiedTeam.jpg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Unified Team (Soviet Union)',
     text: 'The Unified Team (ex-USSR countries that competed together because the Soviet Union broke up several months before the start of the Games) won the most medals overall, 112, as well as the most gold medals, 45.'
   },
   {
-    title: '3 - What sport would Freddy play if he was an olympic athlete?',
+    title: 'What sport would Freddy play if he was an olympic athlete?',
     imgSrc: 'FreddieMercury.jpg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Boxing',
     text: 'Freddie was sent to a boarding school where he gained interest in music and some sports, especially boxing. He was brilliant in boxing but his mother didn\'t like the sport because it was too violent, which led him to stop boxing.'
   },
   {
-    title: '4 - What was the 1992 Olympiad games mascot?',
+    title: 'What was the 1992 Olympiad games mascot?',
     imgSrc: 'cobi1992.jpg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Cobi',
     text: 'Cobi is a humanized Pyrenean mountain dog in a cubist style. While his expression and three spiky hairs are the same, he has an impressively large wardrobe.'
   },
   {
-    title: '5 - How many extra teeth grew in Freddy’s mouth as he grew up?',
+    title: 'How many extra teeth grew in Freddy’s mouth as he grew up?',
     imgSrc: 'dentesfreddy.jpeg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Four',
     text: 'Freddie Mercury had four extra teeth that grew in his mouth as he grew up, which contributed to his distinctive overbite.'
   },
   {
-    title: '6 - What’s Freddy\'s favorite pet animal?',
+    title: 'What’s Freddy\'s favorite pet animal?',
     imgSrc: 'catfreddy.jpeg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Cat',

@@ -1,6 +1,5 @@
 import { navigate } from "../router.js";
 import gameView from "./gameView.js";
-  sessionStorage.setItem("result","4")
 function render() {
 
     const container = document.getElementById("container");

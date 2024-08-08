@@ -1,9 +1,6 @@
 export const questions =
     [
-        {
-            time : 10,
-            type : "jump game"
-        },
+
         {
             time: 10,
             type: "text",
@@ -16,7 +13,7 @@ export const questions =
             time: 10,
             type: "text",
             question: "What country won the most number of medals in 1992 Barcelona Olympiad games?",
-            responses: ["South Korea", "E.U.A", "Unified Team(Soviet Union)", "China"],
+            responses: ["South Korea", "E.U.A", "Soviet Union", "China"],
             correctResponse: 2,
             clue: "russians.jpeg"
         },
@@ -27,17 +24,10 @@ export const questions =
         {
             time: 10,
             type: "text",
-            question: "What is Freddy Mercury birth name?",
-            responses: ["Charles Henry", "Farrokh Bulsara", "Youssef Hassan", "Abdus Shakur"],
-            correctResponse: 1
-        },
-        {
-            time: 10,
-            type: "text",
             question: "How many differences are in the following image?",
             responses: ["Five", "One", "Four", "Six"],
             correctResponse: 2,
-            clue : "diferencas.jpg"
+            clue: "diferencas.jpg"
         },
         {
             time: 10,
@@ -52,7 +42,11 @@ export const questions =
             question: "What was the 1992 Olympiad games mascot?",
             responses: ["Teddy", "Wolfy", "Cobi", "Snaky"],
             correctResponse: 2,
-            clue : "mascots.jpg"
+            clue: "mascots.jpg"
+        },
+        {
+            time: 10,
+            type: "jump game"
         },
         {
             time: 10,
@@ -60,7 +54,7 @@ export const questions =
             question: "How many extra teeth grew in Freddy’s mouth as he grew up?",
             responses: ["Four", "Seven", "One", "Five"],
             correctResponse: 0,
-            clue : "teeth.jpg"
+            clue: "teeth.jpg"
         },
         {
             time: 10,
@@ -68,7 +62,7 @@ export const questions =
             question: "What’s Freddy favourite pet animal?",
             responses: ["Turtle", "Cat", "Dog", "Fish"],
             correctResponse: 1,
-            clue : "freddyFavouritePet.jpg"
+            clue: "freddyFavouritePet.jpg"
         }
     ];
 

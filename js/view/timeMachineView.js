@@ -8,7 +8,7 @@ document.body.appendChild(container);
  
 
   // Create and style elements
-  const header = document.createElement('header');
+  const header = document.createElement('h2');
 
   container.setAttribute("id", "olympicContainer")
 
@@ -165,7 +165,7 @@ header.style.textShadow = "1px 1px 1px black, 1px 2px 1px black, 1px 3px 1px bla
 
 // Placeholder functions
 function redirect() {
-  window.location.href = "/olympics";
+    window.location.href = "/countries";
 }
 
 function playAudio() {

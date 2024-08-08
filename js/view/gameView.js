@@ -2,6 +2,7 @@ import { questions } from "../service/gameService.js";
 import { navigate } from "../router.js";
 import gameController from "../controler/gameController.js";
 import raceService from "../service/raceService.js";
+import { getCountryImg } from "../service/chooseCountryService.js";
 
 let currentQuestion = 0;
 const maxQuestions = questions.length - 1;
@@ -58,7 +59,7 @@ const IMG_BASE_SRC = "../";
 
 function render() {
 
-    const container = document.getElementById("container");
+    const container = document.getElementById("olympicContainer");
 
     container.innerHTML = "";
 
@@ -78,23 +79,23 @@ function render() {
 
     const player1 = document.createElement("img");
     player1.setAttribute("id", "player1");
-    player1.setAttribute("src", "player.png");
+    player1.setAttribute("src", getCountryImg(sessionStorage.getItem("country")));
     raceContainer.appendChild(player1)
 
     const player2 = document.createElement("img");
     player2.setAttribute("id", "player2");
-    player2.setAttribute("src", "player2.png");
+    player2.setAttribute("src", getCountryImg("ua"));
     raceContainer.appendChild(player2)
 
     const player3 = document.createElement("img");
     player3.setAttribute("id", "player3");
-    player3.setAttribute("src", "player3.png");
+    player3.setAttribute("src", getCountryImg("gt"));
     raceContainer.appendChild(player3)
 
     const player4 = document.createElement("img");
     player4.setAttribute("id", "player4");
-    player4.setAttribute("src", "player4.png");
-    raceContainer.appendChild(player4)
+    player4.setAttribute("src", getCountryImg("ro"));
+    raceContainer.appendChild(player4);
 
     const timer = document.createElement("h1");
 
@@ -295,10 +296,13 @@ function checkJump() {
         return;
     }
 
-
     gameController.setIsMoving1(true)
     gameController.setPoints1(5);
     raceService.checkAndMove1();
+
+    setTimeout(() => {
+        gameController.setIsMoving1 = false;
+    },200)
 
 }
 
@@ -383,46 +387,85 @@ function clickGame() {
 }
 
 function textQuizz() {
+
     quizzContainer.style.backgroundImage = 'url("../quizzBackground.webp")';
 
-    const questionsDiv = document.createElement("div");
-    questionsDiv.setAttribute("id", "questionsDiv");
+   // Apply background image to quizzContainer
 
-    for (let i = 0; i < questions[currentQuestion].responses.length; i++) {
-        let response = document.createElement("p");
-        let responseButton = document.createElement("button");
-        responseButton.setAttribute("id", i);
+// Create and style the clue image
+const clueImg = document.createElement("img");
+clueImg.src = `../js/resources/${questions[currentQuestion].clue}`;
+clueImg.setAttribute("id", "clueImg");
+clueImg.style.width = '50%'; // Adjust width as needed
+clueImg.style.height = '50%'; // Adjust height as needed
+clueImg.style.objectFit = 'contain'; 
+clueImg.style.display = 'block'; // Ensure block display to center with margin
+clueImg.style.margin = '0 auto'; // Center horizontally
+clueImg.style.marginBottom = '20px'; // Space below the image
+// Append clueImg to quizzContainer
+quizzContainer.appendChild(clueImg);
 
-        responseButton.addEventListener("click", checkResponse, currentTimer);
+// Create and style the questionsDiv
+const questionsDiv = document.createElement("div");
+questionsDiv.setAttribute("id", "questionsDiv");
+questionsDiv.style.display = 'flex';
+questionsDiv.style.flexDirection = 'row'; // Align items in a row
+questionsDiv.style.flexWrap = 'wrap'; // Allow wrapping of items if necessary
+questionsDiv.style.justifyContent = 'center'; // Center items horizontally
+questionsDiv.style.marginTop = '20px'; // Space above the questionsDiv
 
-        responseButton.textContent = i + 1;
-        response.textContent = questions[currentQuestion].responses[i];
+// Create and append response buttons and text
+for (let i = 0; i < questions[currentQuestion].responses.length; i++) {
+    let response = document.createElement("p");
+    let responseButton = document.createElement("button");
+    responseButton.setAttribute("id", i);
+    
+    responseButton.addEventListener("click", checkResponse, currentTimer);
 
-        questionsDiv.appendChild(response);
-        questionsDiv.appendChild(responseButton);
+    responseButton.textContent = i + 1;
+    response.textContent = questions[currentQuestion].responses[i];
 
-    }
+    response.style.margin = '0 10px'; // Horizontal spacing between responses
+    responseButton.style.margin = '0 10px'; // Horizontal spacing between buttons
 
-    quizzContainer.appendChild(questionsDiv);
+    // Append response and button to questionsDiv
+    questionsDiv.appendChild(response);
+    questionsDiv.appendChild(responseButton);
+}
 
-    const clueImg = document.createElement("img");
-    clueImg.src = `../js/resources/${questions[currentQuestion].clue}`;
-    clueImg.setAttribute("id", "clueImg");
-    quizzContainer.appendChild(clueImg);
+// Append questionsDiv to quizzContainer
+quizzContainer.appendChild(questionsDiv);
+
 }
 
 function imageQuizz() {
     quizzContainer.style.backgroundImage = 'url("../quizzBackground.webp")';
-    for (let i = 0; i < questions[currentQuestion].responses.length; i++) {
-        let image = document.createElement("img");
-        image.src = `${IMG_BASE_SRC}${questions[currentQuestion].responses[i]}`;
-        image.setAttribute("id", i);
-        image.setAttribute("class", "quizzImage");
 
-        image.addEventListener("click", checkResponse, currentTimer);
+    // Get the quizzContainer element
+// Apply styles to quizzContainer
+quizzContainer.style.textAlign = 'center'; // Center images horizontally
+quizzContainer.style.padding = '20px'; // Optional padding for the container
 
-        quizzContainer.appendChild(image);
-    }
+// Loop through the responses and create images
+for (let i = 0; i < questions[currentQuestion].responses.length; i++) {
+    let image = document.createElement("img");
+    image.src = `${IMG_BASE_SRC}${questions[currentQuestion].responses[i]}`;
+    image.setAttribute("id", i);
+    image.setAttribute("class", "quizzImage");
+    image.style.cursor = "pointer"
+
+    // Apply styles to the image
+    image.style.display = 'inline-block'; // Align images in a row
+    image.style.width = '40%'; // Adjust width as needed
+    image.style.height = '40%'; // Maintain aspect ratio
+    image.style.margin = '10px'; // Space between images
+    image.style.objectFit = 'contain'; // Ensure image covers its area
+
+    image.addEventListener("click", checkResponse, currentTimer);
+
+    quizzContainer.appendChild(image);
+}
+
 }
 
 function changeQuestion() {
@@ -446,7 +489,7 @@ function changeQuestion() {
 function wrongAnswer() {
 
 
-    const container = document.getElementById("container");
+    const container = document.getElementById("olympicContainer");
 
     quizzContainer.innerHTML = "";
 

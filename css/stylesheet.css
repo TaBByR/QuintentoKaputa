@@ -290,6 +290,19 @@ footer {
   overflow: scroll;
   width: 60vw;
   height: 60vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-image: url("../barcelona.jpg");
+  background-size: contain;
+  background-position: 0 0;
+  background-attachment: fixed;
+  animation: animatedBackground 500s linear infinite;
+  border-radius: 15px;
+
 }
 
 .countryDiv {
