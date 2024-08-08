@@ -69,3 +69,20 @@ body {
     height: 50px;
     position: relative;
 }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #FFCC00;
+  }
+  #box  
+   img {
+              
+              object-fit: cover;
+          }
+          header {
+            background-color: #FFCC00;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+          }
