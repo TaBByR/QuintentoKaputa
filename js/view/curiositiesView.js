@@ -1,4 +1,4 @@
-
+import { navigate } from "../router.js";
 
 function render() {document.body.innerHTML = ""
 // Create a container div
@@ -58,14 +58,14 @@ const cardsContent = [
   },
   {
     title: '5 - How many extra teeth grew in Freddy’s mouth as he grew up?',
-    imgSrc: 'dentesfreddy.jpg',
+    imgSrc: 'dentesfreddy.jpeg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Four',
     text: 'Freddie Mercury had four extra teeth that grew in his mouth as he grew up, which contributed to his distinctive overbite.'
   },
   {
     title: '6 - What’s Freddy\'s favorite pet animal?',
-    imgSrc: 'catfreddy.jpg',
+    imgSrc: 'catfreddy.jpeg',
     imgAlt: 'aladin',
     subtitle: 'Correct Answer - Cat',
     text: 'Cats were known to be Freddie Mercury\'s family. He adopted a lot of cats from shelters and hospitals in order to save their lives.'
@@ -112,8 +112,23 @@ cardsContent.forEach(cardContent => {
   container.appendChild(createCard(cardContent));
 });
 
+const cabinetButton = document.createElement("button");
+    cabinetButton.setAttribute("id","button");
+    cabinetButton.textContent = "RETURN TO THE TIME MACHINE";
+    container.appendChild(cabinetButton);
+    cabinetButton.style.fontSize = "48px";
+    cabinetButton.style.textAlign = "center";
+    cabinetButton.style.position = "absolute";
+    cabinetButton.style.top = "95%";
+    cabinetButton.style.left = "28%";
+
+    cabinetButton.addEventListener("click",() => {
+        navigate("/")
+    })
+
 // Create the footer
 const footer = document.createElement('footer');
+footer.style.margin = "120px";
 footer.innerHTML = '&copy; Quinteto Kaputa, 2024 HACKATON @ codeforall_';
 container.appendChild(footer);
 
