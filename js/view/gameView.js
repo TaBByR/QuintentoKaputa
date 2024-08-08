@@ -300,9 +300,6 @@ function checkJump() {
     gameController.setPoints1(5);
     raceService.checkAndMove1();
 
-    setTimeout(() => {
-        gameController.setIsMoving1 = false;
-    },200)
 
 }
 

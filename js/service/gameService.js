@@ -4,7 +4,7 @@ export const questions =
         {
             time: 10,
             type: "text",
-            question: "With who did Monserrat Caballé perform the opening sonf of 1992 Barcelona Olympiad Games?",
+            question: "With who did Monserrat Caballé perform the opening song of 1992 Barcelona Olympiad Games?",
             responses: ["Guga Boy", "Freddy Mercury", "Eminem", "George Michael"],
             correctResponse: 1,
             clue: "freddyMercuryClue.jpeg",
