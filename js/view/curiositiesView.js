@@ -16,7 +16,7 @@ function render() {
             <img src="DAHMER.webp" alt="dahmer">
         </div>
         <div id="box">
-            <img src="dreamteam.jpg" alt="dreamteam">
+            <img src="dreamteam.jp" alt="dreamteam">
             <img src="George-Bush.avif" alt="bush">
         </div>
         <div id="box">
