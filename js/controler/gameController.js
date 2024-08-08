@@ -1,12 +1,15 @@
 import gameView from "../view/gameView.js";
 import raceService from "../service/raceService.js";
 
-let points1 = 10;
-let points2 = 8;
-let points3 = 7;
-let points4 = 5;
+let points1;
+let points2;
+let points3;
+let points4;
 
-let isMoving = true;
+let isMoving1 = false;
+let isMoving2 = false;
+let isMoving3 = false;
+let isMoving4 = false;
 
 function setPoints1(newPoints) {
     points1 = newPoints;
@@ -21,8 +24,17 @@ function setPoints4(newPoints) {
     points4 = newPoints;
 }
 
-function setIsMoving(newIsMoving) {
-    isMoving = newIsMoving;
+function setIsMoving1(newIsMoving) {
+    isMoving1 = newIsMoving;
+}
+function setIsMoving2(newIsMoving) {
+    isMoving2 = newIsMoving;
+}
+function setIsMoving3(newIsMoving) {
+    isMoving3 = newIsMoving;
+}
+function setIsMoving4(newIsMoving) {
+    isMoving4 = newIsMoving;
 }
 
 function getPoints1() {
@@ -39,20 +51,21 @@ function getPoints4() {
 }   
 
 
-function getIsMoving() {
-    return isMoving;
+function getIsMoving1() {
+    return isMoving1;
+}
+function getIsMoving2() {
+    return isMoving2;
+}
+function getIsMoving3() {
+    return isMoving3;
+}
+function getIsMoving4() {
+    return isMoving4;
 }
 
 export function init() {
     gameView.render();
-    setIsMoving(true); 
-    raceService.checkAndMove1();
-    raceService.checkAndMove2();
-    raceService.checkAndMove3();
-    raceService.checkAndMove4();
-    setTimeout(function() {
-        setIsMoving(false);
-    }, 1000);
 }
 
 export default {
@@ -60,10 +73,16 @@ export default {
     getPoints2,
     getPoints3,
     getPoints4,
-    getIsMoving,
+    getIsMoving1,
+    getIsMoving2,
+    getIsMoving3,
+    getIsMoving4,
     setPoints1,
     setPoints2,
     setPoints3,
     setPoints4,
-    setIsMoving,
+    setIsMoving1,
+    setIsMoving2,
+    setIsMoving3,
+    setIsMoving4,
 };

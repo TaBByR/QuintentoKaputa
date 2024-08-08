@@ -19,7 +19,7 @@ body {
     height: 600px;
     background-color: blue;
     margin: 50px;
-
+    overflow: hidden;
 }
 
 #raceContainer {
@@ -56,6 +56,15 @@ body {
     flex-direction: column;
     background-image: url("../pista.jpeg");
     background-size: cover;
+}
+
+.quizzImage {
+    width: 200px;
+}
+
+#runButton {
+    position: relative;
+    transition: 0.5s transform;
 }
 
 #player1 {

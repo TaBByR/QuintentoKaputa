@@ -6,7 +6,7 @@ function move1({ target }) {
     const actualPosition = parseInt(getComputedStyle(target).left);
     const points1 = gameController.getPoints1();
     if (points1 === 10) {
-        target.style.left = actualPosition + 4 + "px";
+        target.style.left = actualPosition + 4   + "px";
     } else if (points1 === 8) {
         target.style.left = actualPosition + 3 + "px";
     } else if (points1 === 7) {
@@ -55,8 +55,9 @@ function move4({ target }) {
     }
 }
 
+
 function checkAndMove1() {
-    if (!gameController.getIsMoving()) {
+    if (!gameController.getIsMoving1()) {
         cancelAnimationFrame(animationFrameId);
         return;
     }
@@ -66,7 +67,7 @@ function checkAndMove1() {
 }
 
 function checkAndMove2() {
-    if (!gameController.getIsMoving()) {
+    if (!gameController.getIsMoving2()) {
         cancelAnimationFrame(animationFrameId);
         return;
     }
@@ -76,7 +77,7 @@ function checkAndMove2() {
 }
 
 function checkAndMove3() {
-    if (!gameController.getIsMoving()) {
+    if (!gameController.getIsMoving3()) {
         cancelAnimationFrame(animationFrameId);
         return;
     }
@@ -86,7 +87,7 @@ function checkAndMove3() {
 }
 
 function checkAndMove4() {
-    if (!gameController.getIsMoving()) {
+    if (!gameController.getIsMoving4()) {
         cancelAnimationFrame(animationFrameId);
         return;
     }
