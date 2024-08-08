@@ -1,9 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  margin: 0;
 }
 
 .card-body {
@@ -16,159 +16,191 @@ body {
 }
 
 #olympicContainer {
-    background-color: green;
-    height: 100vh;
-    margin: 0%;
-    padding: 0%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background-color: green;
+  height: 100vh;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #quizzContainer {
-    width: 800px;
-    height: 600px;
-    background-color: blue;
-    margin: 50px;
-    overflow: hidden;
+  width: 800px;
+  height: 600px;
+  background-color: blue;
+  margin: 50px;
+  overflow: hidden;
 }
 
 #raceContainer {
-    width: 500px;
-    height: 200px;
-    background-color: red;
-    display: flex;
-    flex-direction: column;
+  width: 500px;
+  height: 200px;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
 }
 
 #timeMachineContainer {
-    background-color: green;
-    height: 100vh;
-    margin: 0%;
-    padding: 0%;
-    display: flex;
+  background-color: green;
+  height: 100vh;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
 }
 
 #swimmerContainer {
-    width: 50px;
-    height: 600px;
-    top: 20;
-    align-items: flex-end;
-    background-color: blue;
+  width: 50px;
+  height: 600px;
+  top: 20;
+  align-items: flex-end;
+  background-color: blue;
 }
 
 #hallOfFameContainer {
-    height: 100vh;
-    margin: 0%;
-    padding: 0%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: url("../pista.jpeg");
-    background-size: cover;
+  height: 100vh;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../pista.jpeg");
+  background-size: cover;
 }
 
 .quizzImage {
-    width: 200px;
+  width: 200px;
 }
 
 #runButton {
-    position: relative;
-    transition: 0.5s transform;
+  position: relative;
+  transition: 0.5s transform;
 }
 
 #player1 {
-    width: 50px;
-    height: 50px;
-    position: relative;
+  width: 50px;
+  height: 50px;
+  position: relative;
 }
 
 #player2 {
-    width: 50px;
-    height: 50px;
-    position: relative;
+  width: 50px;
+  height: 50px;
+  position: relative;
 }
 
 #player3 {
-    width: 50px;
-    height: 50px;
-    position: relative;
+  width: 50px;
+  height: 50px;
+  position: relative;
 }
 
 #player4 {
-    width: 50px;
-    height: 50px;
-    position: relative;
+  width: 50px;
+  height: 50px;
+  position: relative;
 }
 
 header {
-    background-color: #ffcc00;
-    padding: 20px;
-    text-align: center;
-    font-size: 2em;
-  }
+  background-color: #ffcc00;
+  padding: 20px;
+  text-align: center;
+  font-size: 2em;
+}
 
-  header img {
-    margin-left: 0%;
-    margin-top: 1%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .timeline {
-    padding: 20px;
-  }
-  
-  .timeline-event {
-    background: white;
-    margin: 20px 0;
-    padding: 10px;
-    border-left: 5px solid #ffcc00;
-  }
-  
-  .timeline-event h2 {
-    margin-top: 0;
-  }
-  
-  .redirect-button {
-    margin-top: 50px;
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #ffcc00;
-    color: black;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-  }
-  
-  .redirect-button:hover {
-    background-color: #b12411;
-  }
+header img {
+  margin-left: 0%;
+  margin-top: 1%;
+  max-width: 100%;
+  height: auto;
+}
 
-  .audio-controls {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .audio-controls button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #ffcc00;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .audio-controls button:hover {
-    background-color: #ffb700;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #ffcc00;
-  }
+.timeline {
+  padding: 20px;
+}
+
+.timeline-event {
+  background: white;
+  margin: 20px 0;
+  padding: 10px;
+  border-left: 5px solid #ffcc00;
+}
+
+.timeline-event h2 {
+  margin-top: 0;
+}
+
+.redirect-button {
+  margin-top: 50px;
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #ffcc00;
+  color: black;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.redirect-button:hover {
+  background-color: #b12411;
+}
+
+.audio-controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.audio-controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #ffcc00;
+  border: none;
+  cursor: pointer;
+}
+
+.audio-controls button:hover {
+  background-color: #ffb700;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #ffcc00;
+}
+
+#countriesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  width: 60vw;
+  height: 60vh;
+}
+
+.countryDiv {
+  text-align: center;
+  background-color: grey;
+  padding: 20px;
+  margin: 20px;
+}
+
+#clueImg {
+  width: 300px;
+}
+
+#light {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#jumpCharacter {
+  width : 50px;
+}
+
