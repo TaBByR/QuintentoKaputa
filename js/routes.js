@@ -15,6 +15,10 @@ export default {
         path : "/cabinetofcuriosities",
         controller : "curiositiesController"
     },
+    countries : {
+        path : "/countries",
+        controller : "chooseCountryController"
+    },
     currentPath: {
         path: '',
         controller: ''

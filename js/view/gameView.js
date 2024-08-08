@@ -15,10 +15,13 @@ let trash = false;
 
 let hasAnswered = false;
 let botInterval;
+let lightInterval;
 const margin = 60;
 
 
+
 console.log(sessionStorage.getItem("country"));
+console.log(sessionStorage.getItem("playerName"));
 
 const IMG_BASE_SRC = "../";
 
@@ -111,6 +114,40 @@ function makeQuestionForm() {
         imageQuizz();
     }
 
+    if (questions[currentQuestion].type === "jump game") {
+        // BOT AI
+        botInterval = setInterval(() => {
+
+            gameController.setIsMoving2(true);
+            gameController.setIsMoving3(true);
+            gameController.setIsMoving4(true);
+
+            gameController.setPoints2(5);
+            gameController.setPoints3(5);
+            gameController.setPoints4(5);
+
+            switch (Math.floor(Math.random() * 2) + 1) {
+                case 1:
+                    raceService.checkAndMove2()
+                    raceService.checkAndMove4()
+                    break;
+                case 2:
+                    raceService.checkAndMove3()
+                    break;
+            }
+
+            setTimeout(function () {
+                gameController.setIsMoving2(false);
+                gameController.setIsMoving3(false);
+                gameController.setIsMoving4(false);
+            }, 100);
+
+        }, 1000);
+
+        jumpGame();
+        return;
+    }
+
     if (questions[currentQuestion].type === "click game") {
         clickGame();
         return
@@ -125,6 +162,43 @@ function makeQuestionForm() {
     setTimeout(function () {
         randomMove4()
     }, parseInt(Math.random() * (9000 - 1000) + 1000));
+}
+
+function jumpGame() {
+    const gameDescription = document.createElement("p");
+    gameDescription.textContent = "Run on the green light!!";
+
+    const light = document.createElement("span");
+    light.setAttribute("id", "light");
+
+    const jumpButton = document.createElement("button");
+    jumpButton.addEventListener("click", checkJump);
+    jumpButton.textContent = "Run!!!1";
+
+    quizzContainer.appendChild(gameDescription);
+    quizzContainer.appendChild(light);
+    quizzContainer.appendChild(jumpButton);
+
+    lightInterval = setInterval(() => {
+        if (light.style.backgroundColor === "red") {
+            light.style.backgroundColor = "green";
+        } else {
+            light.style.backgroundColor = "red";
+        }
+    }, 300);
+}
+
+function checkJump() {
+    if (document.getElementById("light").style.backgroundColor === "red") {
+        wrongAnswer();
+        return;
+    }
+    
+
+    gameController.setIsMoving1(true)
+    gameController.setPoints1(5);
+    raceService.checkAndMove1();
+
 }
 
 function clickGame() {
@@ -223,6 +297,11 @@ function textQuizz() {
         quizzContainer.appendChild(responseButton);
 
     }
+
+    const clueImg = document.createElement("img");
+    clueImg.src = `../js/resources/${questions[currentQuestion].clue}`;
+    clueImg.setAttribute("id", "clueImg");
+    quizzContainer.appendChild(clueImg);
 }
 
 function imageQuizz() {
