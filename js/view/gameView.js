@@ -8,17 +8,48 @@ const maxQuestions = questions.length - 1;
 let quizzContainer;
 let currentTimer;
 
-let firstPlace = true;
+let firstPlace = false;
 let secondPlace = false;
 let thirdPlace = false;
 let trash = false;
+
+
+sessionStorage.setItem("result", "");
 
 let hasAnswered = false;
 let botInterval;
 let lightInterval;
 const margin = 60;
+let counter;
 
+function getFirstPlace() {
+    return firstPlace
+}
+function getSecondPlace() {
+    return secondPlace
+}
+function getThirdPlace() {
+    return thirdPlace
+}
+function getTrash() {
+    return trash
+}
 
+function setFirstPlace(value) {
+    firstPlace = value;
+}
+
+function setSecondPlace(value) {
+    secondPlace = value;
+}
+
+function setThirdPlace(value) {
+    thirdPlace = value;
+}
+
+function setTrash(value) {
+    trash = value;
+}
 
 console.log(sessionStorage.getItem("country"));
 console.log(sessionStorage.getItem("playerName"));
@@ -65,35 +96,82 @@ function render() {
     player4.setAttribute("src", "player4.png");
     raceContainer.appendChild(player4)
 
+    const timer = document.createElement("h1");
+
+    timer.setAttribute("id", "timer");
+    timer.textContent = questions[currentQuestion].time;
+    timer.style.fontSize = "48px";
+    timer.style.textAlign = "center";
+    timer.style.position = "absolute";
+    timer.style.top = "0";
+    timer.style.left = "50%";
+    timer.style.transform = "translateX(-50%)";
+
+
+    container.appendChild(timer);
 
     makeQuestionForm();
 
 
 };
 
+function calculateResult() {
+    counter = 0;
+
+    const player1pos = parseInt(getComputedStyle(document.querySelector("#player1")).left);
+    const player2pos = parseInt(getComputedStyle(document.querySelector("#player2")).left);
+    const player3pos = parseInt(getComputedStyle(document.querySelector("#player3")).left);
+    const player4pos = parseInt(getComputedStyle(document.querySelector("#player4")).left);
+
+    if (player1pos > player2pos) {
+        counter++
+    }
+
+    if (player1pos > player3pos) {
+        counter++;
+    }
+
+    if (player1pos > player4pos) {
+        counter++;
+    }
+}
+
+function endResult() {
+    calculateResult()
+
+    switch (counter) {
+        case 3:
+            sessionStorage.setItem("result", "1");
+            firstPlace = true;
+            break;
+        case 2:
+            sessionStorage.setItem("result", "2");
+            secondPlace = true;
+            break;
+        case 1:
+            sessionStorage.setItem("result", "3");
+            thirdPlace = true;
+            break;
+        case 0:
+            sessionStorage.setItem("result", "4");
+            trash = true;
+            break;
+    }
+}
+
 function makeQuestionForm() {
 
     const container = document.getElementById("container");
 
+
     quizzContainer.innerHTML = "";
 
-    const timer = document.createElement("h3");
-    timer.textContent = questions[currentQuestion].time;
-    timer.setAttribute("id", "timer");
 
-    timer.style.fontSize = "48px"; 
-    timer.style.color = "black"; 
-    timer.style.textAlign = "center"; 
-    timer.style.position = "absolute"; 
-    timer.style.top = "0"; 
-    timer.style.left = "50%"; 
-    timer.style.transform = "translateX(-50%)";
 
 
     const questionText = document.createElement("p");
     questionText.textContent = questions[currentQuestion].question;
 
-    container.appendChild(timer);
     quizzContainer.appendChild(questionText);
 
     currentTimer = setInterval(() => {
@@ -165,15 +243,38 @@ function makeQuestionForm() {
 }
 
 function jumpGame() {
-    const gameDescription = document.createElement("p");
-    gameDescription.textContent = "Run on the green light!!";
+    quizzContainer.style.backgroundImage = 'url("../race2.jpeg")';
+    const gameDescription = document.createElement("h3");
+    gameDescription.textContent = "CLICK THE CAR ON THE GREEN LIGHT";
+
+    gameDescription.style.textAlign = "center";
+    gameDescription.style.position = "absolute";
+    gameDescription.style.top = "12%";
+    gameDescription.style.left = "50%";
+    gameDescription.style.transform = "translateX(-50%)";
 
     const light = document.createElement("span");
     light.setAttribute("id", "light");
 
-    const jumpButton = document.createElement("button");
+    light.style.textAlign = "center";
+    light.style.position = "absolute";
+    light.style.top = "30%";
+    light.style.left = "50%";
+    light.style.transform = "translateX(-50%)";
+
+
+    const jumpButton = document.createElement("img");
     jumpButton.addEventListener("click", checkJump);
-    jumpButton.textContent = "Run!!!1";
+    jumpButton.setAttribute("src", "car.png")
+
+    jumpButton.style.position = "absolute";
+    jumpButton.style.top = "40%";
+    jumpButton.style.left = "50%";
+    jumpButton.style.transform = "translateX(-50%)";
+    jumpButton.style.height = "150px";
+    jumpButton.style.width = "250px";
+
+
 
     quizzContainer.appendChild(gameDescription);
     quizzContainer.appendChild(light);
@@ -193,7 +294,7 @@ function checkJump() {
         wrongAnswer();
         return;
     }
-    
+
 
     gameController.setIsMoving1(true)
     gameController.setPoints1(5);
@@ -202,15 +303,14 @@ function checkJump() {
 }
 
 function clickGame() {
-    const gameText = document.createElement("p");
+    const gameText = document.createElement("h3");
     gameText.textContent = "CATCH THE SWIMMER";
 
-    gameText.style.fontSize = "48px"; 
-    gameText.style.color = "black"; 
-    gameText.style.textAlign = "center"; 
-    gameText.style.position = "absolute"; 
-    gameText.style.top = "10%"; 
-    gameText.style.left = "50%"; 
+
+    gameText.style.textAlign = "center";
+    gameText.style.position = "absolute";
+    gameText.style.top = "12%";
+    gameText.style.left = "50%";
     gameText.style.transform = "translateX(-50%)";
 
     const runButton = document.createElement("img");
@@ -283,6 +383,11 @@ function clickGame() {
 }
 
 function textQuizz() {
+    quizzContainer.style.backgroundImage = 'url("../quizzBackground.webp")';
+
+    const questionsDiv = document.createElement("div");
+    questionsDiv.setAttribute("id", "questionsDiv");
+
     for (let i = 0; i < questions[currentQuestion].responses.length; i++) {
         let response = document.createElement("p");
         let responseButton = document.createElement("button");
@@ -293,10 +398,12 @@ function textQuizz() {
         responseButton.textContent = i + 1;
         response.textContent = questions[currentQuestion].responses[i];
 
-        quizzContainer.appendChild(response);
-        quizzContainer.appendChild(responseButton);
+        questionsDiv.appendChild(response);
+        questionsDiv.appendChild(responseButton);
 
     }
+
+    quizzContainer.appendChild(questionsDiv);
 
     const clueImg = document.createElement("img");
     clueImg.src = `../js/resources/${questions[currentQuestion].clue}`;
@@ -305,6 +412,7 @@ function textQuizz() {
 }
 
 function imageQuizz() {
+    quizzContainer.style.backgroundImage = 'url("../quizzBackground.webp")';
     for (let i = 0; i < questions[currentQuestion].responses.length; i++) {
         let image = document.createElement("img");
         image.src = `${IMG_BASE_SRC}${questions[currentQuestion].responses[i]}`;
@@ -318,30 +426,38 @@ function imageQuizz() {
 }
 
 function changeQuestion() {
+
     hasAnswered = false;
     clearInterval(currentTimer);
     clearInterval(botInterval);
 
     if (currentQuestion >= maxQuestions) {
+        endResult();
+        navigate("/halloffame");
         return;
     }
     currentQuestion++;
+
+    document.getElementById("timer").textContent = questions[currentQuestion].time;
+
     makeQuestionForm();
 }
 
 function wrongAnswer() {
 
+
+    const container = document.getElementById("container");
+
     quizzContainer.innerHTML = "";
 
-    const timer = document.createElement("h3");
-    timer.textContent = questions[currentQuestion].time;
-    timer.setAttribute("id", "timer");
+    document.getElementById("timer").textContent = questions[currentQuestion].time;
+
 
 
     const youSuck = document.createElement("img");
     youSuck.setAttribute("src", "MEKIE ALWAYS LOSES, NOW SO DO YOU.jpg")
 
-    quizzContainer.appendChild(timer);
+    container.appendChild(timer);
     quizzContainer.appendChild(youSuck);
 }
 
@@ -499,7 +615,7 @@ function randomMove4() {
         gameController.setIsMoving4(false);
     }, 300);
 }
-export default { render, firstPlace, secondPlace, thirdPlace, trash };
+export default { render, getFirstPlace, getSecondPlace, getThirdPlace, getTrash, setFirstPlace, setSecondPlace, setThirdPlace, setTrash };
 
 
 
