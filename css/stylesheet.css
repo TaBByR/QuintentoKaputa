@@ -6,6 +6,15 @@ body {
     margin: 0;
 }
 
+.card-body {
+    font-family: Arial, sans-serif;
+    margin-left: 2%;
+    margin-top: 0%;
+    padding: 0;
+    background-color: #f4f4f4;
+    
+}
+
 #olympicContainer {
     background-color: green;
     height: 100vh;
