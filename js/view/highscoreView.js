@@ -23,7 +23,7 @@ function render() {
     cabinetButton.style.textAlign = "center";
     cabinetButton.style.position = "absolute";
     cabinetButton.style.top = "10%";
-    cabinetButton.style.left = "27%";
+    cabinetButton.style.left = "25%";
 
     cabinetButton.addEventListener("click",() => {
         navigate("/cabinetofcuriosities")
