@@ -2,6 +2,7 @@ import { questions } from "../service/gameService.js";
 import { navigate } from "../router.js";
 import gameController from "../controler/gameController.js";
 import raceService from "../service/raceService.js";
+import { getCountryImg } from "../service/chooseCountryService.js";
 
 let currentQuestion = 0;
 const maxQuestions = questions.length - 1;
@@ -78,23 +79,23 @@ function render() {
 
     const player1 = document.createElement("img");
     player1.setAttribute("id", "player1");
-    player1.setAttribute("src", "player.png");
+    player1.setAttribute("src", getCountryImg(sessionStorage.getItem("country")));
     raceContainer.appendChild(player1)
 
     const player2 = document.createElement("img");
     player2.setAttribute("id", "player2");
-    player2.setAttribute("src", "player2.png");
+    player2.setAttribute("src", getCountryImg("ua"));
     raceContainer.appendChild(player2)
 
     const player3 = document.createElement("img");
     player3.setAttribute("id", "player3");
-    player3.setAttribute("src", "player3.png");
+    player3.setAttribute("src", getCountryImg("gt"));
     raceContainer.appendChild(player3)
 
     const player4 = document.createElement("img");
     player4.setAttribute("id", "player4");
-    player4.setAttribute("src", "player4.png");
-    raceContainer.appendChild(player4)
+    player4.setAttribute("src", getCountryImg("ro"));
+    raceContainer.appendChild(player4);
 
     const timer = document.createElement("h1");
 

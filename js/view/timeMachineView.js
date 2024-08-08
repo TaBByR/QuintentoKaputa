@@ -63,7 +63,7 @@ function render() {
 };
 
 function redirect() {
-    window.location.href = "/olympics";
+    window.location.href = "/countries";
 }
 
 function playAudio() {

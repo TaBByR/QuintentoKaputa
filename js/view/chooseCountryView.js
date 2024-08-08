@@ -1,7 +1,7 @@
 import { getCountryImg } from "../service/chooseCountryService.js";
 import { navigate } from "../router.js";
 
-let selectedCountry = "Portugal";
+let selectedCountry = "us-sc";
 
 function render(countries) {
     console.log(countries);
@@ -37,16 +37,16 @@ function populateCountries(countries, countriesContainer) {
     Object.keys(countries).forEach((countryKey) => {
         const countryDiv = document.createElement("div");
         countryDiv.setAttribute("class", "countryDiv");
-        countryDiv.setAttribute("id", countries[countryKey]);
+        countryDiv.setAttribute("id", countryKey);
         countryDiv.addEventListener("click", selectCountry);
         
         const countryImg = document.createElement("img");
         countryImg.src = getCountryImg(countryKey);
-        countryImg.setAttribute("id", countries[countryKey]);
+        countryImg.setAttribute("id", countryKey);
 
         const countryName = document.createElement("h4");
         countryName.textContent = countries[countryKey];
-        countryName.setAttribute("id", countries[countryKey]);
+        countryName.setAttribute("id", countryKey);
 
         countryDiv.appendChild(countryImg);
         countryDiv.appendChild(countryName);
@@ -58,6 +58,7 @@ function populateCountries(countries, countriesContainer) {
 
 function selectCountry() {
     event.stopPropagation();
+
     document.getElementById(selectedCountry).style.backgroundColor = "grey";
     selectedCountry = event.target.id;
     document.getElementById(event.target.id).style.backgroundColor = "blue";
