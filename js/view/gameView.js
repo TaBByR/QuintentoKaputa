@@ -8,7 +8,7 @@ const maxQuestions = questions.length - 1;
 let quizzContainer;
 let currentTimer;
 
-let firstPlace = false;
+let firstPlace = true;
 let secondPlace = false;
 let thirdPlace = false;
 let trash = false;
@@ -49,17 +49,17 @@ function render() {
 
     const player2 = document.createElement("img");
     player2.setAttribute("id", "player2");
-    player2.setAttribute("src", "player.png");
+    player2.setAttribute("src", "player2.png");
     raceContainer.appendChild(player2)
 
     const player3 = document.createElement("img");
     player3.setAttribute("id", "player3");
-    player3.setAttribute("src", "player.png");
+    player3.setAttribute("src", "player3.png");
     raceContainer.appendChild(player3)
 
     const player4 = document.createElement("img");
     player4.setAttribute("id", "player4");
-    player4.setAttribute("src", "player.png");
+    player4.setAttribute("src", "player4.png");
     raceContainer.appendChild(player4)
 
 
@@ -70,16 +70,27 @@ function render() {
 
 function makeQuestionForm() {
 
+    const container = document.getElementById("container");
+
     quizzContainer.innerHTML = "";
 
     const timer = document.createElement("h3");
     timer.textContent = questions[currentQuestion].time;
     timer.setAttribute("id", "timer");
 
+    timer.style.fontSize = "48px"; 
+    timer.style.color = "black"; 
+    timer.style.textAlign = "center"; 
+    timer.style.position = "absolute"; 
+    timer.style.top = "0"; 
+    timer.style.left = "50%"; 
+    timer.style.transform = "translateX(-50%)";
+
+
     const questionText = document.createElement("p");
     questionText.textContent = questions[currentQuestion].question;
 
-    quizzContainer.appendChild(timer);
+    container.appendChild(timer);
     quizzContainer.appendChild(questionText);
 
     currentTimer = setInterval(() => {
@@ -118,12 +129,21 @@ function makeQuestionForm() {
 
 function clickGame() {
     const gameText = document.createElement("p");
-    gameText.textContent = "No question, run!!";
+    gameText.textContent = "CATCH THE SWIMMER";
 
-    const runButton = document.createElement("button");
-    runButton.textContent = "Run!!";
+    gameText.style.fontSize = "48px"; 
+    gameText.style.color = "black"; 
+    gameText.style.textAlign = "center"; 
+    gameText.style.position = "absolute"; 
+    gameText.style.top = "10%"; 
+    gameText.style.left = "50%"; 
+    gameText.style.transform = "translateX(-50%)";
+
+    const runButton = document.createElement("img");
+    runButton.setAttribute("src", "swimmer.png")
     runButton.setAttribute("id", "runButton");
 
+    quizzContainer.style.backgroundImage = 'url("../pool.jpeg")';
     quizzContainer.appendChild(gameText);
     quizzContainer.appendChild(runButton);
 
@@ -175,7 +195,7 @@ function clickGame() {
             gameController.setIsMoving1(false);
         }, 100);
 
-      
+
 
         let randY = Math.floor(Math.random() * (quizzContainer.offsetHeight - margin * 2));
         let randX = Math.floor(Math.random() * (quizzContainer.offsetWidth - margin * 2));
@@ -400,7 +420,7 @@ function randomMove4() {
         gameController.setIsMoving4(false);
     }, 300);
 }
-export default { render };
+export default { render, firstPlace, secondPlace, thirdPlace, trash };
 
 
 
